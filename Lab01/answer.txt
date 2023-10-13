@@ -1,0 +1,29 @@
+Questions and answers:
+6.1:
+
+1. What happens when users select "Cancel"?
+   If users select "Cancel," the variable 'option' is assigned a value of 2 before it is compared to 'JOptionPane.YES_OPTION,' which has a value of 1.
+Since 2 is not equal to 1, the program will display the "No" message on the screen, as if the users had chosen 'No'.
+
+2. How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t”
+   Instead of using the 'showConfirmDialog' method, you can utilize the 'showOptionDialog' method to tailor the options for users.
+   The 'showOptionDialog' method follows this syntax:
+   /*  -------------------------------------------------
+       int option = JOptionPane.showOptionDialog(
+       null,
+       "Do you want to switch to a first-class ticket?",
+       "Choose an option",
+       JOptionPane.YES_NO_OPTION,
+       JOptionPane.QUESTION_MESSAGE,
+       null,
+       new String[] {"Yes", "No"},
+       "Yes"
+   );  -------------------------------------------------*/                                                 */
+   The 'showOptionDialog' method returns an integer value, representing the index of the option chosen by the user.
+   In the example above, selecting 'Yes' assigns a value of 0 to the 'option' variable, while choosing 'No' assigns a value of 1.
+
+
+
+
+
+
