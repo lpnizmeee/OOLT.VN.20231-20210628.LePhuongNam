@@ -1,0 +1,1 @@
+Java does not allow this because the constructor (overridden method) does not have to have the same name and the same signature (the same number and data types of method arguments).
