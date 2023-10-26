@@ -1,0 +1,14 @@
+Accessor methods, also known as "getters," are used in object-oriented programming to retrieve the values of private or
+encapsulated fields (class variables) of an object. These methods are crucial for data encapsulation and are a
+fundamental concept in object-oriented design. Here's when you should use accessor methods:
+
+- Encapsulation and Data Hiding: They allow controlled access to private class variables, ensuring that the internal
+state of an object is not directly exposed.
+- Access Control: Accessor methods enable you to implement logic or restrictions on data access, such as validation
+checks or calculations.
+- Read-Only Fields: They facilitate making fields read-only, preventing direct modification by providing only getters.
+- Code Maintenance: Accessor methods simplify changing the internal data representation without affecting the code that
+uses the class.
+- Testing: They are useful for inspecting an object's internal state during testing and debugging.
+- Consistency and Naming Conventions: Accessor methods help enforce naming conventions and code consistency, making the
+code more readable and predictable.
