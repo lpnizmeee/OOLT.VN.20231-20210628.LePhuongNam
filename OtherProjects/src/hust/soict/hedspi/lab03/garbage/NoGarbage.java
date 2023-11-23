@@ -4,7 +4,7 @@ import java.nio.file.Paths;
 import java.io.IOException;
 public class NoGarbage {
     public static void main(String[] args) {
-        String filename = "hust/soict/hedspi/garbage/test.exe";
+        String filename = "hust/soict/hedspi/lab03/garbage/test.exe";
         byte[] inputBytes = {0};
         long startTime, endTime;
 
