@@ -1,3 +1,4 @@
+package hust.soict.hedspi.aims.disc;
 public class DigitalVideoDisc {
     private static int nbDigitalVideoDiscs = 0;
     private int id;
@@ -19,6 +20,9 @@ public class DigitalVideoDisc {
     }
     public float getCost() {
         return cost;
+    }
+    public int getId() {
+        return id;
     }
 
     public void setTitle(String title) {
@@ -52,5 +56,16 @@ public class DigitalVideoDisc {
         this.director = director;
         this.length = length;
         this.cost = cost;
+    }
+
+    public boolean isMatch(String title) {
+        title = title.toLowerCase();
+        String[] words = title.split(" ");
+        for (String word : words) {
+            if (this.title.toLowerCase().contains(word)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
