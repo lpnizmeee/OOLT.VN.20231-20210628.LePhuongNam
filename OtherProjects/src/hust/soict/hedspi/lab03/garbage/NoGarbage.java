@@ -2,9 +2,9 @@ package hust.soict.hedspi.garbage;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
-public class GarbageCreator {
+public class NoGarbage {
     public static void main(String[] args) {
-        String filename = "hust/soict/hedspi/garbage/test.txt";
+        String filename = "hust/soict/hedspi/garbage/test.exe";
         byte[] inputBytes = {0};
         long startTime, endTime;
 
@@ -14,11 +14,11 @@ public class GarbageCreator {
             e.printStackTrace();
         }
         startTime = System.currentTimeMillis();
-        String outputString = "";
+        StringBuilder outputString = new StringBuilder();
         for(byte b: inputBytes) {
-            outputString += (char) b;
+            outputString.append((char) b);
         }
         endTime = System.currentTimeMillis();
-        System.out.println("Time elapsed when using String: " + (endTime - startTime) + "ms");
+        System.out.println("Time elapsed when using StringBuilder: " + (endTime - startTime) + "ms");
     }
 }
