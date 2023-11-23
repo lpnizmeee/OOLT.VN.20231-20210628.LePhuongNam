@@ -1,6 +1,6 @@
 package hust.soict.hedspi.aims.media;
 
-public class CompactDisc extends Disc {
+public class CompactDisc extends Disc implements Playable {
     private String artist;
     private ArrayList<Track> tracks = new ArrayList<Track>();
     public CompactDisc(String title) {
@@ -33,6 +33,13 @@ public class CompactDisc extends Disc {
             length += track.getLength();
         }
         return length;
+    }
+    public void play() {
+        System.out.println("Playing CD: " + this.title());
+        System.out.println("CD length: " + this.getLength());
+        for (Track track : this.tracks) {
+            track.play();
+        }
     }
 
 }
