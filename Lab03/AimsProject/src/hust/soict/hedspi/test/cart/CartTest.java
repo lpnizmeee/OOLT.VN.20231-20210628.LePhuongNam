@@ -22,6 +22,6 @@ public class CartTest{
 
         //Test the search method
         cart.searchByID(2);
-        cart.searchByTitle("lion");
+        cart.searchByTitle("lion meow meow");
     }
 }
