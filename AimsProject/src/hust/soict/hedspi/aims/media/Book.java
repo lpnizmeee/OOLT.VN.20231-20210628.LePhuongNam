@@ -9,7 +9,7 @@ public class Book extends Media{
     }
 
     public Book() {
-
+        super();
     }
 
     public void addAuthor(String authorName) {

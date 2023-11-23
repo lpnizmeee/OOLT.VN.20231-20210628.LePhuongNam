@@ -4,11 +4,13 @@ public class DigitalVideoDisc extends Disc {
     private static int nbDigitalVideoDiscs = 0;
 
     public DigitalVideoDisc(String title) {
+        super();
         this.id = nbDigitalVideoDiscs++;
         this.title = title;
     }
 
     public DigitalVideoDisc(String category, String title, float cost) {
+        super();
         this.id = nbDigitalVideoDiscs++;
         this.title = title;
         this.category = category;
@@ -16,6 +18,7 @@ public class DigitalVideoDisc extends Disc {
     }
 
     public DigitalVideoDisc(String director, String category, String title, float cost) {
+        super();
         this.id = nbDigitalVideoDiscs++;
         this.title = title;
         this.category = category;
@@ -24,6 +27,7 @@ public class DigitalVideoDisc extends Disc {
     }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
+        super();
         this.id = nbDigitalVideoDiscs++;
         this.title = title;
         this.category = category;

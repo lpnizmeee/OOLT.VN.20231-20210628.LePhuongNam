@@ -4,5 +4,7 @@ public abstract class Media{
     protected String category;
     protected float cost;
     protected int id;
+    public Media() {
+    }
 
 }
