@@ -138,6 +138,7 @@ public class Aims {
 
     public static void seeMediaDetails() {
         System.out.println("Enter the media's title: ");
+        sc.nextLine();
         String title = sc.nextLine();
         Media media = store.searchByTitle(title);
         if (media != null) {
@@ -149,6 +150,7 @@ public class Aims {
 
     public static void addMediaToCart() {
         System.out.println("Enter the media's title: ");
+        sc.nextLine();
         String title = sc.nextLine();
         Media media = store.searchByTitle(title);
         if (media != null) {
@@ -209,6 +211,7 @@ public class Aims {
             switch (option) {
                 case 1:
                     System.out.println("Enter the title: ");
+                    sc.nextLine();
                     String title = sc.nextLine();
                     Media find = cart.searchByTitle(title);
                     break;
@@ -257,6 +260,7 @@ public class Aims {
 
     public static void removeMediaFromCart() {
         System.out.println("Enter the media's title: ");
+        sc.nextLine();
         String title = sc.nextLine();
         Media media = cart.searchByTitle(title);
         cart.removeMedia(media);
@@ -264,6 +268,7 @@ public class Aims {
 
     public static void playMedia() {
         System.out.println("Enter the media's title: ");
+        sc.nextLine();
         String title = sc.nextLine();
         Media media = cart.searchByTitle(title);
         if (media != null) {
