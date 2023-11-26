@@ -15,6 +15,16 @@ public class MediaTest {
         mediae.add(dvd);
         mediae.add(book);
 
+//        for (Media m : mediae) {
+//            System.out.println(m.toString());
+//        }
+        System.out.println("Sort by cost: ");
+        mediae.sort(Media.COMPARE_BY_COST_TITLE);
+        for (Media m : mediae) {
+            System.out.println(m.toString());
+        }
+        System.out.println("Sort by title: ");
+        mediae.sort(Media.COMPARE_BY_TITLE_COST);
         for (Media m : mediae) {
             System.out.println(m.toString());
         }
