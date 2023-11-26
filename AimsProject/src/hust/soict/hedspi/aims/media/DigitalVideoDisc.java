@@ -1,40 +1,10 @@
 package hust.soict.hedspi.aims.media;
 import hust.soict.hedspi.aims.media.Disc;
 public class DigitalVideoDisc extends Disc implements Playable {
-    private static int nbDigitalVideoDiscs = 0;
-
-
-    public DigitalVideoDisc(String title) {
-        super();
-        this.id = nbDigitalVideoDiscs++;
-        this.title = title;
-    }
-
-    public DigitalVideoDisc(String category, String title, float cost) {
-        super();
-        this.id = nbDigitalVideoDiscs++;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
-    }
-
-    public DigitalVideoDisc(String director, String category, String title, float cost) {
-        super();
-        this.id = nbDigitalVideoDiscs++;
-        this.title = title;
-        this.category = category;
-        this.director = director;
-        this.cost = cost;
-    }
 
     public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-        super();
-        this.id = nbDigitalVideoDiscs++;
-        this.title = title;
-        this.category = category;
-        this.director = director;
+        super(title, category, cost, director);
         this.length = length;
-        this.cost = cost;
     }
 
     public boolean isMatch(String title) {
@@ -51,5 +21,9 @@ public class DigitalVideoDisc extends Disc implements Playable {
     public void play() {
         System.out.println("Playing DVD: " + this.title);
         System.out.println("DVD length: " + this.length);
+    }
+
+    public String toString() {
+        return "DVD - " + this.id + " - " + this.title + " - " + this.category + " - " + this.director + " - " + this.length + " - " + this.cost + "$";
     }
 }
