@@ -23,6 +23,14 @@ public abstract class Media{
         return cost;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public Media(String title) {
         this.title = title;
         nbMedia++;

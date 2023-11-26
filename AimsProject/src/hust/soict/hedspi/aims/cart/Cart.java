@@ -3,7 +3,7 @@ import hust.soict.hedspi.aims.media.Media;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
-import java.util.Collections.sort;
+import java.util.Collections.*;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -38,42 +38,48 @@ public class Cart {
     public float totalCost() {
         float total = 0;
         for (Media media : itemsOrdered) {
-            total += media.cost();
+            total += media.getCost();
         }
         return total;
     }
 
-    public void print(){
+    public void print() {
         System.out.println("***********************CART***********************");
-        System.out.println("Ordered Items:");
-        for (int i = 0; i < qtyOrdered; i++) {
-            System.out.println(i + 1 + ". DVD - " + itemsOrdered[i].getTitle() + " - " + itemsOrdered[i].getCategory() + " - " + itemsOrdered[i].getDirector() + " - " + itemsOrdered[i].getLength() + ": " + itemsOrdered[i].getCost() + "$");
+        System.out.println("Ordered items: ");
+        for (Media media : itemsOrdered) {
+            System.out.println(media.getId() + ". " + media.getTitle() + " - " + media.getCategory() + " - " + media.getCost());
         }
         System.out.println("Total cost: " + totalCost());
         System.out.println("***************************************************");
     }
 
-    public void searchByID(int id) {
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered[i].getId() == id) {
-                System.out.println("Found the disc " + itemsOrdered[i].getTitle());
-                return;
+    public Media searchByID(int id) {
+        for (Media media : itemsOrdered) {
+            if (media.getId() == id) {
+                media.toString();
+                return media;
             }
         }
-        System.out.println("Not found the disc");
-        }
-
-    public void searchByTitle(String title) {
-        for (int i = 0; i < qtyOrdered; i++) {
-            if (itemsOrdered[i].isMatch(title)) {
-                System.out.println("Found the disc " + itemsOrdered[i].getTitle());
-                return;
-            }
-        }
-        System.out.println("Not found the disc");
-        return;
+        System.out.println("Not found");
+        return null;
     }
+
+    public Media searchByTitle(String title) {
+        for (Media media : itemsOrdered) {
+            if (media.getTitle().equals(title)) {
+                media.toString();
+                return media;
+            }
+        }
+        System.out.println("Not found");
+        return null;
+    }
+
     public void sort(Comparator<Media> comparator) {
-        Collections.sort(itemsOrdered, comparator);
+        itemsOrdered.sort(comparator);
+    }
+
+    public void clear() {
+        itemsOrdered.clear();
     }
 }
