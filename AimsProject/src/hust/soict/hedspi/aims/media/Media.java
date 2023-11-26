@@ -7,5 +7,13 @@ public abstract class Media{
     public Media() {
     }
 
+    public boolean equals(Object obj) {
+        if (obj instanceof Media) {
+            Media media = (Media) obj;
+            if (this.title.equals(media.title)) {
+                return true;
+            }
+        }
+    }
 
 }
