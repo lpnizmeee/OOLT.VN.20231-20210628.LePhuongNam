@@ -1,4 +1,5 @@
 package hust.soict.hedspi.aims.media;
+import hust.soict.hedspi.aims.media.comparators.*;
 public abstract class Media{
     public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
     public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
