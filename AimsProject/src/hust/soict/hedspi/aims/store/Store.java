@@ -1,5 +1,7 @@
 package hust.soict.hedspi.aims.store;
-import hust.soict.hedspi.aims.disc.DigitalVideoDisc;
+import hust.soict.hedspi.aims.media.*;
+import java.util.ArrayList;
+
 
 public class Store {
     public static final int MAX_NUMBERS_QUANTITY_OF_STORE = 1000;
@@ -21,13 +23,21 @@ public class Store {
             return;
         }
         System.out.println("The media is not in the store");
+    }
 
+    public Media searchByTitle(String title) {
+        for (Media media : itemsInStore) {
+            if (media.getTitle().equals(title)) {
+                return media;
+            }
+        }
+        return null;
     }
 
     public void printStore() {
         System.out.println("Store's content: ");
         for (int i = 0; i < itemsInStore.size(); i++) {
-            System.out.println(i+1 + ". " + itemsInStore.get(i).getTitle() + " - " + itemsInStore.get(i).getCategory() + " - " + itemsInStore.get(i).getDirector() + " - " + itemsInStore.get(i).getLength() + " - " + itemsInStore.get(i).getCost());
+            System.out.println(i+1 + ". " + itemsInStore.get(i).getTitle() + " - " + itemsInStore.get(i).getCategory() + " - " + itemsInStore.get(i).getCost());
         }
     }
 }
