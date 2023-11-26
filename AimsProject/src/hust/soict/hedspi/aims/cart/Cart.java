@@ -1,6 +1,9 @@
 package hust.soict.hedspi.aims.cart;
 import hust.soict.hedspi.aims.media.Media;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Comparator;
+import java.util.Collections.sort;
 
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
@@ -69,5 +72,8 @@ public class Cart {
         }
         System.out.println("Not found the disc");
         return;
+    }
+    public void sort(Comparator<Media> comparator) {
+        Collections.sort(itemsOrdered, comparator);
     }
 }
