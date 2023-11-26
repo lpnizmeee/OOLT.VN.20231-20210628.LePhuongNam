@@ -8,6 +8,12 @@ public class Cart {
 
     public void addMedia(Media media) {
         if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+            for (Media media1 : itemsOrdered) {
+                if (media1.equals(media)) {
+                    System.out.println("The disc is already in the cart");
+                    return;
+                }
+            }
             itemsOrdered.add(media);
             System.out.println("The disc has been added");
         } else {
@@ -16,12 +22,14 @@ public class Cart {
     }
 
     public void removeMedia(Media media) {
-        if (itemsOrdered.contains(media)) {
-            itemsOrdered.remove(media);
-            System.out.println("The disc has been removed");
-        } else {
-            System.out.println("The disc is not in the cart");
+        for (Media media1 : itemsOrdered) {
+            if (media1.equals(media)) {
+                itemsOrdered.remove(media);
+                System.out.println("The disc has been removed");
+                return;
+            }
         }
+        System.out.println("The disc is not in the cart");
     }
 
     public float totalCost() {
