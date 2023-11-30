@@ -72,8 +72,9 @@ public class StoreScreen extends JFrame {
         return center;
     }
 
-    public StoreScreen(Store store) {
+    public StoreScreen(Store store, Cart cart) {
         this.store = store;
+        this.cart = cart;
         Container cp = getContentPane();
         cp.setLayout(new BorderLayout());
 
