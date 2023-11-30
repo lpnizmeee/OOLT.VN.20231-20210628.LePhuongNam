@@ -271,16 +271,10 @@ public class Aims {
         sc.nextLine();
         String title = sc.nextLine();
         Media media = cart.searchByTitle(title);
-        if (media != null) {
-            if(media instanceof CompactDisc) {
-                ((CompactDisc) media).play();
-            } else if (media instanceof DigitalVideoDisc) {
-                ((DigitalVideoDisc) media).play();
-            } else {
-                System.out.println("This media is not playable");
-            }
+        if (media instanceof Playable) {
+            ((Playable) media).play();
         } else {
-            System.out.println("Media not found");
+            System.out.println("This media is not playable");
         }
     }
 
