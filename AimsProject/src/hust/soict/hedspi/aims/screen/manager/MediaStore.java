@@ -1,7 +1,7 @@
-package hust.soict.hedspi.aims.screen;
+package hust.soict.hedspi.aims.screen.manager;
 
 import hust.soict.hedspi.aims.media.*;
-import hust.soict.hedspi.aims.screen.*;
+import hust.soict.hedspi.aims.screen.manager.*;
 import hust.soict.hedspi.aims.cart.*;
 
 import javax.swing.*;
@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 
 public class MediaStore extends JPanel {
     private Media media;
-    public MediaStore(Media media, Cart cart) {
+    public MediaStore(Media media) {
         this.media = media;
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -27,27 +27,23 @@ public class MediaStore extends JPanel {
         JPanel container = new JPanel();
         container.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        JButton btnAddToCart = new JButton("Add to cart");
-        btnAddToCart.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cart.addMedia(media);
-            }
-        });
-
-
         JButton btnPlay = new JButton("Play");
         btnPlay.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(media instanceof Playable) {
                     ((Playable) media).play();
+                    JDialog dialog = new JDialog();
+                    dialog.setTitle("Playing media");
+                    dialog.setSize(200, 200);
+                    dialog.setLocationRelativeTo(null);
+                    dialog.setVisible(true);
+                    dialog.add(new JLabel("Playing " + media.getTitle()));
+
                 }
             }
         });
 
-
-        container.add(btnAddToCart);
         if(media instanceof Playable) {
             container.add(btnPlay);
         }
