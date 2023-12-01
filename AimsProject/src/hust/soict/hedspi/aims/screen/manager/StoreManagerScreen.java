@@ -24,9 +24,29 @@ public class StoreManagerScreen extends JFrame {
         menu.add(new JMenuItem("View Store"));
 
         JMenu smUpdateStore = new JMenu("Update Store");
-        smUpdateStore.add(new JMenuItem("Add Book"));
-        smUpdateStore.add(new JMenuItem("Add CD"));
-        smUpdateStore.add(new JMenuItem("Add DVD"));
+
+        JButton btnAddBook = new JButton("Add Book");
+        btnAddBook.addActionListener(e -> {
+            AddBookToStoreScreen addBookToStoreScreen = new AddBookToStoreScreen(store, this);
+            addBookToStoreScreen.setVisible(true);
+
+        });
+
+        JButton btnAddCD = new JButton("Add CD");
+        btnAddCD.addActionListener(e -> {
+            AddCompactDiscToStoreScreen addCDToStoreScreen = new AddCompactDiscToStoreScreen(store, this);
+            addCDToStoreScreen.setVisible(true);
+        });
+
+        JButton btnAddDVD = new JButton("Add DVD");
+        btnAddDVD.addActionListener(e -> {
+            AddDigitalVideoDiscToStoreScreen addDVDToStoreScreen = new AddDigitalVideoDiscToStoreScreen(store, this);
+            addDVDToStoreScreen.setVisible(true);
+        });
+
+        smUpdateStore.add(btnAddBook);
+        smUpdateStore.add(btnAddCD);
+        smUpdateStore.add(btnAddDVD);
         menu.add(smUpdateStore);
 
         JMenuBar menuBar = new JMenuBar();
@@ -67,15 +87,21 @@ public class StoreManagerScreen extends JFrame {
 
     public StoreManagerScreen(Store store) {
         this.store = store;
+        storeGenerate();
+    }
 
+    public void storeGenerate() {
         Container cp = getContentPane();
+        cp.removeAll();
         cp.setLayout(new BorderLayout());
         cp.add(createNorth(), BorderLayout.NORTH);
         cp.add(createCenter(), BorderLayout.CENTER);
-
+        cp.validate();
+        cp.repaint();
         setTitle("Store");
         setSize(1024, 768);
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
 }
