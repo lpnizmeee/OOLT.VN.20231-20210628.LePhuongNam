@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
-
+import java.text.DecimalFormat;
 public class CartController {
     private Cart cart;
     private Store store;
@@ -73,7 +73,7 @@ public class CartController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Place order");
         alert.setHeaderText("Are you sure want to place order?");
-        alert.setContentText("Total cost: " + cart.totalCost() + " $");
+        alert.setContentText("Total cost: " + roundTotalCost(cart.totalCost()) + " $");
 
         // option != null.
         Optional<ButtonType> option = alert.showAndWait();
@@ -139,7 +139,7 @@ public class CartController {
             tblMedia.setItems(cart.getItemsOrdered());
         }
 
-        costLabel.setText(cart.totalCost() + " $");
+        costLabel.setText(roundTotalCost(cart.totalCost()) + " $");
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
@@ -192,7 +192,13 @@ public class CartController {
     }
 
     void updateTotalCost() {
-        costLabel.setText(cart.totalCost() + " $");
+        costLabel.setText(roundTotalCost(cart.totalCost()) + " $");
+    }
+
+    String roundTotalCost(float totalCost) {
+        DecimalFormat df = new DecimalFormat("#.##");
+        return df.format(totalCost);
+
     }
 
 }
