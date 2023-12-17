@@ -27,7 +27,7 @@ public class ViewStoreController {
     @FXML
     void btnViewCartPressed(ActionEvent event) {
         try {
-            final String FXML_CART_PATH = "/hust/soict/hedspi/aims/screen/customer/Cart.fxml";
+            final String FXML_CART_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Cart.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_CART_PATH));
             fxmlLoader.setController(new CartController(cart, store));
             Parent root = fxmlLoader.load();
@@ -55,7 +55,7 @@ public class ViewStoreController {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource(FXML_ITEM_PATH));
                 Media media = store.getItemsInStore().get(i);
-                ItemController itemController = new ItemController(media);
+                ItemController itemController = new ItemController(media, cart);
                 fxmlLoader.setController(itemController);
                 AnchorPane anchorPane = new AnchorPane();
                 anchorPane = fxmlLoader.load();

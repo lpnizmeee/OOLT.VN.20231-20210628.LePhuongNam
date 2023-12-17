@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class CartController {
     private Cart cart;
@@ -32,6 +33,10 @@ public class CartController {
 
     @FXML
     private Button btnRemove;
+
+    @FXML
+    private Button btnPlaceOrder;
+
 
     @FXML
     private TableColumn<Media, String> colMediaCategory;
@@ -64,7 +69,39 @@ public class CartController {
     private TableView<Media> tblMedia;
 
     @FXML
+    void btnPlaceOrderPressed(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Place order");
+        alert.setHeaderText("Are you sure want to place order?");
+        alert.setContentText("Total cost: " + cart.totalCost() + " $");
+
+        // option != null.
+        Optional<ButtonType> option = alert.showAndWait();
+        if (option.get() == ButtonType.OK) {
+            cart.clear();
+            updateTotalCost();
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+            alert1.setTitle("Place order");
+            alert1.setHeaderText(null);
+            alert1.setContentText("Order placed successfully!");
+            alert1.showAndWait();
+        } else if (option.get() == ButtonType.CANCEL) {
+
+        } else {}
+
+    }
+
+    @FXML
     void btnPlayPressed(ActionEvent event) {
+        Media media = tblMedia.getSelectionModel().getSelectedItem();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Play");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText("Playing " + media.getTitle() + "!");
+
+        alert.showAndWait();
 
     }
 
@@ -72,6 +109,7 @@ public class CartController {
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(media);
+        updateTotalCost();
 
     }
 
@@ -101,6 +139,7 @@ public class CartController {
             tblMedia.setItems(cart.getItemsOrdered());
         }
 
+        costLabel.setText(cart.totalCost() + " $");
         btnPlay.setVisible(false);
         btnRemove.setVisible(false);
 
@@ -118,6 +157,8 @@ public class CartController {
                         showFilteredMedia(newValue);
             }
         });
+
+
     }
 
     void updateButtonBar(Media media) {
@@ -148,6 +189,10 @@ public class CartController {
                 tblMedia.setItems(cart.searchByTitle(filter));
             }
         }
+    }
+
+    void updateTotalCost() {
+        costLabel.setText(cart.totalCost() + " $");
     }
 
 }
