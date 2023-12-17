@@ -1,30 +1,48 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
 import com.sun.media.jfxmedia.control.VideoRenderControl;
+import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.store.Store;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class ViewStoreController {
     private Store store;
+    private Cart cart;
 
     @FXML
     private GridPane gridPane;
 
     @FXML
     void btnViewCartPressed(ActionEvent event) {
-
+        try {
+            final String FXML_CART_PATH = "/hust/soict/hedspi/aims/screen/customer/Cart.fxml";
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_CART_PATH));
+            fxmlLoader.setController(new CartController(cart, store));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Cart");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public ViewStoreController(Store store) {
+    public ViewStoreController(Store store, Cart cart) {
         this.store = store;
+        this.cart = cart;
     }
 
     @FXML
