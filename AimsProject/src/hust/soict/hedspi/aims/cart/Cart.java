@@ -56,27 +56,27 @@ public class Cart {
         System.out.println("***************************************************");
     }
 
-    public Media searchByID(int id) {
+    public ObservableList<Media> searchByID(Integer id) {
+        ObservableList<Media> result = FXCollections.observableArrayList();
         for (Media media : itemsOrdered) {
             if (media.getId() == id) {
-                media.toString();
-                return media;
+//                media.toString();
+                result.add(media);
             }
         }
-        System.out.println("Not found");
-        return null;
+        return result;
     }
 
-    public Media searchByTitle(String title) {
+    public ObservableList<Media> searchByTitle(String title) {
+        ObservableList<Media> result = FXCollections.observableArrayList();
         for (Media media : itemsOrdered) {
-            if (media.getTitle().equals(title)) {
-                media.toString();
-                return media;
+            if (media.getTitle().contains(title)) {
+                result.add(media);
             }
         }
-        System.out.println("Not found");
-        return null;
+        return result;
     }
+
 
     public void sort(Comparator<Media> comparator) {
         itemsOrdered.sort(comparator);
