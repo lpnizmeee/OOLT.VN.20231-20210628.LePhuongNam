@@ -1,18 +1,40 @@
 package hust.soict.hedspi.aims;
 import hust.soict.hedspi.aims.cart.Cart;
 import hust.soict.hedspi.aims.media.*;
+import hust.soict.hedspi.aims.screen.customer.controller.ViewStoreController;
 import hust.soict.hedspi.aims.screen.manager.StoreManagerScreen;
 import hust.soict.hedspi.aims.store.*;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-public class Aims {
-    private static Cart cart = new Cart();
-    private static Store store = new Store();
-    private static Scanner sc = new Scanner(System.in);
+public class Aims extends Application {
+
+    private static Store store;
+    private static Cart cart;
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource(STORE_FXML_FILE_PATH));
+        ViewStoreController viewStoreController = new ViewStoreController(store, cart);
+        fxmlLoader.setController(viewStoreController);
+        Parent parent = fxmlLoader.load();
+
+        Scene scene = new Scene(parent);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Store");
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-//        showMenu();
+        store = new Store();
+        cart = new Cart();
         store.addMedia(new DigitalVideoDisc("DVD title", "DVD category", "DVD director", 10, 200.1f));
         store.addMedia(new DigitalVideoDisc("DVD title 2", "DVD category", "DVD director", 10, 200.1f));
         store.addMedia(new DigitalVideoDisc("DVD title 3", "DVD category", "DVD director", 10, 200.1f));
@@ -21,8 +43,12 @@ public class Aims {
         store.addMedia(new CompactDisc("CD title 2", "CD category", 100.1f, "CD director", "CD artist"));
         store.addMedia(new CompactDisc("CD title 3", "CD category", 100.1f, "CD director", "CD artist"));
         store.addMedia(new Book("Book title 2", "Book category", 300.1f, new ArrayList<String>(Arrays.asList("Book author 3", "Book author 4"))));
-        StoreManagerScreen sms = new StoreManagerScreen(store);
+
+        launch(args);
     }
+
+//        StoreManagerScreen sms = new StoreManagerScreen(store);
+//    }
 
 //    public static void showMenu() {
 //        int option;
