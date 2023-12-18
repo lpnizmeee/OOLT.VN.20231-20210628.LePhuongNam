@@ -3,6 +3,7 @@ import hust.soict.hedspi.aims.media.Media;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Comparator;
@@ -13,29 +14,45 @@ public class Cart {
 //    private ArrayList<Media> itemsOrdered = new ArrayList<Media>();
     private ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
     public void addMedia(Media media) {
-        if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
-            for (Media media1 : itemsOrdered) {
-                if (media1.equals(media)) {
-                    System.out.println("The disc is already in the cart");
-                    return;
+        try {
+            if (itemsOrdered.size() < MAX_NUMBERS_ORDERED) {
+                for (Media media1 : itemsOrdered) {
+                    if (media1.equals(media)) {
+                        throw new Exception("ERROR: The disc is already in the cart!");
+                    }
                 }
+                itemsOrdered.add(media);
+            } else {
+                throw new LimitExceededException("ERROR: The number of media has reached its limit!");
             }
-            itemsOrdered.add(media);
-            System.out.println("The disc has been added");
-        } else {
-            System.out.println("The cart is almost full");
+        } catch (LimitExceededException e) {
+            // Handle LimitExceededException
+            System.err.println(e.getMessage());
+            // You may choose to log the exception or perform other actions
+        } catch (Exception e) {
+            // Handle other exceptions
+            System.err.println(e.getMessage());
+            // You may choose to log the exception or perform other actions
         }
     }
 
     public void removeMedia(Media media) {
-        for (Media media1 : itemsOrdered) {
-            if (media1.equals(media)) {
-                itemsOrdered.remove(media);
-                System.out.println("The disc has been removed");
-                return;
+        try {
+            if (itemsOrdered.isEmpty()) {
+                throw new Exception("ERROR: The cart is empty!");
             }
+            for (Media media1 : itemsOrdered) {
+                if (media1.equals(media)) {
+                    itemsOrdered.remove(media);
+                    return;
+                }
+            }
+            throw new Exception("ERROR: The disc is not in the cart!");
+        } catch (Exception e) {
+            // Handle other exceptions
+            System.err.println(e.getMessage());
+            // You may choose to log the exception or perform other actions
         }
-        System.out.println("The disc is not in the cart");
     }
 
     public float totalCost() {

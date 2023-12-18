@@ -35,14 +35,14 @@ public class Aims extends Application {
     public static void main(String[] args) {
         store = new Store();
         cart = new Cart();
-        store.addMedia(new DigitalVideoDisc("DVD title", "DVD category", "DVD director", 10, 200.1f));
-        store.addMedia(new DigitalVideoDisc("DVD title 2", "DVD category", "DVD director", 10, 200.1f));
-        store.addMedia(new DigitalVideoDisc("DVD title 3", "DVD category", "DVD director", 10, 200.1f));
-        store.addMedia(new Book("Book title", "Book category", 300.1f, new ArrayList<String>(Arrays.asList("Book author 1", "Book author 2"))));
-        store.addMedia(new CompactDisc("CD title", "CD category", 100.1f, "CD director", "CD artist"));
-        store.addMedia(new CompactDisc("CD title 2", "CD category", 100.1f, "CD director", "CD artist"));
-        store.addMedia(new CompactDisc("CD title 3", "CD category", 100.1f, "CD director", "CD artist"));
-        store.addMedia(new Book("Book title 2", "Book category", 300.1f, new ArrayList<String>(Arrays.asList("Book author 3", "Book author 4"))));
+        store.addMedia(new DigitalVideoDisc("DVD Jojo's Bizarre Adventure: Battle Tendency", "Adventure", "Araki", 0, 200.1f));
+        store.addMedia(new DigitalVideoDisc("DVD Haha's Bizarre Adventure: Battle Tendency", "Comedy", "DVD director", 10, 200.2f));
+        store.addMedia(new DigitalVideoDisc("DVD Hihi's Bizarre Adventure: Battle Tendency", "Romance", "DVD director", 10, 200.3f));
+        store.addMedia(new Book("Book Jojo's Bizarre Adventure: Stardust Crusaders", "Adventure", 300.1f, new ArrayList<String>(Arrays.asList("Book author 1", "Book author 2"))));
+        store.addMedia(new CompactDisc("CD Jojo's Bizarre Adventure: Stone Ocean", "Comedy", 100.2f, "CD director", "CD artist"));
+        store.addMedia(new CompactDisc("CD Haha's Bizarre Adventure: Stone Ocean", "Romance", 100.3f, "CD director", "CD artist"));
+        store.addMedia(new CompactDisc("CD Hihi's Bizarre Adventure: Stone Ocean", "Adventure", 100.4f, "CD director", "CD artist"));
+        store.addMedia(new Book("Book Haha's Bizarre Adventure: Stardust Crusaders", "Comedy", 300.5f, new ArrayList<String>(Arrays.asList("Book author 3", "Book author 4"))));
 
         launch(args);
     }

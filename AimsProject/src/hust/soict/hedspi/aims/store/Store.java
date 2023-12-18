@@ -8,21 +8,35 @@ public class Store {
     public ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
     public void addMedia(Media media) {
-        if (itemsInStore.size() < MAX_NUMBERS_QUANTITY_OF_STORE) {
-            itemsInStore.add(media);
-            System.out.println("The media has been added to the store");
-            return;
-        }
-        System.out.println("The store is almost full");
+        try {
+            if (itemsInStore.size() < MAX_NUMBERS_QUANTITY_OF_STORE) {
+                itemsInStore.add(media);
+                return;
+            }
+            else {
+                throw new Exception("The store is almost full");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        };
     }
 
     public void removeMedia(Media media) {
-        if (itemsInStore.contains(media)) {
-            itemsInStore.remove(media);
-            System.out.println("The media has been removed from the store");
-            return;
+        try {
+            if (itemsInStore.isEmpty()) {
+                throw new Exception("The store is empty");
+            }
+            else if (itemsInStore.contains(media)) {
+                itemsInStore.remove(media);
+                return;
+            }
+            else {
+                throw new Exception("The media is not in the store");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-        System.out.println("The media is not in the store");
+
     }
 
     public Media searchByTitle(String title) {

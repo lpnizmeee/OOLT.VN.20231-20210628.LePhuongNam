@@ -37,15 +37,15 @@ public class ItemController {
     @FXML
     void btnPlayClicked(ActionEvent event) {
         Media media = this.media;
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Play");
-
-        // Header Text: null
-        alert.setHeaderText(null);
-        alert.setContentText("Playing " + media.getTitle() + "!");
-
-        alert.showAndWait();
-
+        try {
+            ((Playable)media).play();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     public ItemController(Media media, Cart cart) {

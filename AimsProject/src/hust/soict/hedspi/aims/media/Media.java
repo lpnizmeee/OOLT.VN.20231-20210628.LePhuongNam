@@ -52,9 +52,10 @@ public abstract class Media{
 
 
     public boolean equals(Object obj) {
+        if (obj == null) return false;
         if (obj instanceof Media) {
             Media media = (Media) obj;
-            if (this.title.equals(media.title)) {
+            if (this.title.equals(media.title) && this.cost == media.cost) {
                 return true;
             }
         }
