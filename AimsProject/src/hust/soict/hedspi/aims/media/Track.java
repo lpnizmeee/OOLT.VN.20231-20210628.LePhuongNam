@@ -42,6 +42,11 @@ public class Track implements Playable {
             }
         } catch (PlayerException e) {
             System.err.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Error");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
         }
     }
 

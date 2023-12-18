@@ -1,6 +1,8 @@
 package hust.soict.hedspi.aims.media;
 import hust.soict.hedspi.aims.media.*;
 import hust.soict.hedspi.aims.exception.PlayerException;
+import javafx.scene.control.Alert;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,6 +74,11 @@ public class CompactDisc extends Disc implements Playable {
             }
         } catch (PlayerException e) {
             System.err.println(e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+
+            alert.setTitle("Error");
+            alert.setHeaderText(e.getMessage());
+            alert.showAndWait();
         }
     }
 
