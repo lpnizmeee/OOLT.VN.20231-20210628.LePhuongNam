@@ -1,5 +1,8 @@
 package hust.soict.hedspi.aims.media;
 
+import hust.soict.hedspi.aims.exception.PlayerException;
+import javafx.scene.control.Alert;
+
 public class Track implements Playable {
     private String title;
     private int length;
@@ -23,9 +26,23 @@ public class Track implements Playable {
         return this.length;
     }
 
-    public void play() {
-        System.out.println("Playing Track: " + this.getTitle());
-        System.out.println("Track length: " + this.getLength());
+    public void play() throws PlayerException {
+        try {
+            if(this.length > 0) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Play");
+
+                // Header Text: null
+                alert.setHeaderText(null);
+                alert.setContentText("Playing " + this.getTitle() + "!");
+
+                alert.showAndWait();
+            } else {
+                throw new PlayerException("ERROR: DVD length is non-positive!");
+            }
+        } catch (PlayerException e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     public boolean equals(Object obj) {

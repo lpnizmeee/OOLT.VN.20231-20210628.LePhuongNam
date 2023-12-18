@@ -35,7 +35,7 @@ public class Aims extends Application {
     public static void main(String[] args) {
         store = new Store();
         cart = new Cart();
-        store.addMedia(new DigitalVideoDisc("DVD title", "DVD category", "DVD director", 10, 200.1f));
+        store.addMedia(new DigitalVideoDisc("DVD title", "DVD category", "DVD director", 0, 200.1f));
         store.addMedia(new DigitalVideoDisc("DVD title 2", "DVD category", "DVD director", 10, 200.1f));
         store.addMedia(new DigitalVideoDisc("DVD title 3", "DVD category", "DVD director", 10, 200.1f));
         store.addMedia(new Book("Book title", "Book category", 300.1f, new ArrayList<String>(Arrays.asList("Book author 1", "Book author 2"))));

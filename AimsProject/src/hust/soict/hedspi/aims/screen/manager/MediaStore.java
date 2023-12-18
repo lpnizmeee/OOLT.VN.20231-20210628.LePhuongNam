@@ -32,7 +32,6 @@ public class MediaStore extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(media instanceof Playable) {
-                    ((Playable) media).play();
                     JDialog dialog = new JDialog();
                     dialog.setTitle("Playing media");
                     dialog.setSize(200, 200);
