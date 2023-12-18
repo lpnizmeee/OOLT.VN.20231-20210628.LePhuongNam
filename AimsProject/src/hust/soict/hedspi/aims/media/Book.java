@@ -20,20 +20,38 @@ public class Book extends Media{
     }
 
     public void addAuthor(String authorName) {
-        if (authors.contains(authorName)) {
-            System.out.println("Author already exists");
-        } else {
-            authors.add(authorName);
-            System.out.println("Author added");
+        try {
+            if (authors.size() < 5) {
+                for (String author : authors) {
+                    if (author.equals(authorName)) {
+                        throw new Exception("Author already exists");
+                    }
+                }
+                authors.add(authorName);
+                System.out.println("Author added");
+            } else {
+                throw new Exception("Authors has reached its limit");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
     }
     public void removeAuthor(String authorName) {
-        if (authors.contains(authorName)) {
-            authors.remove(authorName);
-            System.out.println("Author removed");
-        } else {
-            System.out.println("Author not found");
+        try {
+            if (authors.isEmpty()) {
+                throw new Exception("Authors list is empty");
+            }
+            else if (authors.contains(authorName)) {
+                authors.remove(authorName);
+                System.out.println("Author removed");
+            }
+            else {
+                throw new Exception("Author not found");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
+
     }
 
     public String toString() {

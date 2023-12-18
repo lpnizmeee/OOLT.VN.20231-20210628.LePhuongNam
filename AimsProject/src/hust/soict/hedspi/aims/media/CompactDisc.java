@@ -19,22 +19,31 @@ public class CompactDisc extends Disc implements Playable {
     }
 
     public void addTrack(Track track) {
-        for (Track track1 : this.tracks) {
-            if (track1.equals(track)) {
-                System.out.println("Track already exists");
-                return;
+        try {
+            for (Track track1 : tracks) {
+                if (track1.equals(track)) {
+                    throw new Exception("Track already exists");
+                }
             }
+            this.tracks.add(track);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-        this.tracks.add(track);
     }
     public void removeTrack(Track track) {
-        for (Track track1 : this.tracks) {
-            if (track1.equals(track)) {
-                this.tracks.remove(track);
-                return;
+        try {
+            if (tracks.isEmpty()) {
+                throw new Exception("Track list is empty");
             }
+            else if (tracks.contains(track)) {
+                this.tracks.remove(track);
+            }
+            else {
+                throw new Exception("Track not found");
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
-        System.out.println("Track not found");
     }
     public int getLength() {
         int length = 0;
